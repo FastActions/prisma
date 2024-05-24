@@ -50,7 +50,7 @@ concurrency:
 jobs:
   benchmark:
     name: Benchmark
-    runs-on: blacksmith-2vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     # Only run on main repo (not on forks)
     # This avoids notifications to be sent to `alert-comment-cc-users`, see below
     if: github.repository == 'prisma/prisma'

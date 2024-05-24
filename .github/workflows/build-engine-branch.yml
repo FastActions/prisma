@@ -43,7 +43,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        os: [blacksmith-32vcpu-ubuntu-2204, macos-14, windows-latest]
+        os: [blacksmith-4vcpu-ubuntu-2204, macos-14, windows-latest]
     runs-on: ${{ matrix.os }}
     needs: parseCommand
     if: ${{ needs.parseCommand.outputs.branchName != '' }}
