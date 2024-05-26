@@ -43,7 +43,7 @@ on:
 jobs:
   detect_jobs_to_run:
     name: Detect jobs to run
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     outputs:
       jobs: ${{ steps.detect.outputs.jobs }}
       queryEngine: ${{ steps.enginesOutput.outputs.queryEngine }}
@@ -115,7 +115,7 @@ jobs:
   check_custom_engine:
     name: Block merge if custom engine is used
     needs: build_custom_engine
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Find past custom engine comment
         uses: peter-evans/find-comment@v3

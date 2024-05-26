@@ -39,7 +39,7 @@ jobs:
   release:
     timeout-minutes: 75
     # environment: 'npm-ci'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       # required for publishing to npm with --provenance
       # see https://docs.npmjs.com/generating-provenance-statements
@@ -125,7 +125,7 @@ jobs:
       - release
     if: ${{ success() }}
     name: Communicate success
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Set current job url in SLACK_FOOTER env var
         run: echo "SLACK_FOOTER=<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID|Click here to go to the job logs>" >> "$GITHUB_ENV"
@@ -143,7 +143,7 @@ jobs:
       - release
     if: ${{ failure() }}
     name: Communicate failure
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Set current job url in SLACK_FOOTER env var
         run: echo "SLACK_FOOTER=<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID|Click here to go to the job logs>" >> "$GITHUB_ENV"
