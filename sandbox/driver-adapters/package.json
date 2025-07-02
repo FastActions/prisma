@@ -29,7 +29,7 @@
     "@prisma/driver-adapter-utils": "../../packages/driver-adapter-utils",
     "pg": "../../packages/adapter-pg/node_modules/pg",
     "superjson": "2.2.0",
-    "undici": "5.27.2"
+    "undici": "5.29.0"
   },
   "devDependencies": {
     "@types/node": "18.18.9",
