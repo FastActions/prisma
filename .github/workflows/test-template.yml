@@ -61,7 +61,7 @@ jobs:
   lint:
     name: Lint
     timeout-minutes: 7
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
 
     steps:
       - uses: actions/checkout@v4
@@ -100,7 +100,7 @@ jobs:
   client:
     name: Client func&legacy-notypes
     timeout-minutes: ${{ inputs.jobTimeout }}
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     if: |
       contains(inputs.jobsToRun, '-all-') || 
       contains(inputs.jobsToRun, '-client-')
@@ -183,7 +183,7 @@ jobs:
   client-miniproxy:
     name: Client (func/mini-proxy)
     timeout-minutes: ${{ inputs.jobTimeout }}
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     if: |
       contains(inputs.jobsToRun, '-all-') ||
       contains(inputs.jobsToRun, '-client-')
@@ -253,7 +253,7 @@ jobs:
   client-driveradapters:
     name: Client (func/adapters)
     timeout-minutes: ${{ inputs.jobTimeout }}
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     if: |
       contains(inputs.jobsToRun, '-all-') ||
       contains(inputs.jobsToRun, '-client-')
@@ -320,7 +320,7 @@ jobs:
   client-memory:
     name: Client (memory tests)
     timeout-minutes: ${{ inputs.jobTimeout }}
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     if: |
       contains(inputs.jobsToRun, '-all-') ||
       contains(inputs.jobsToRun, '-client-')
@@ -422,7 +422,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [blacksmith-4vcpu-ubuntu-2404]
         # The Node.js version here is only used for the GitHub Actions job
         # The version used by the tests is actually defined in
         # ./packages/client/tests/e2e/_utils/standard.dockerfile
@@ -467,7 +467,7 @@ jobs:
       fail-fast: false
       matrix:
         relationMode: ['', 'foreignKeys', 'prisma']
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [ubuntu-latest]
         node: [16]
     env:
       NODE_OPTIONS: '--max-old-space-size=8096'
@@ -536,7 +536,7 @@ jobs:
   client-legacy-types:
     name: Client (legacy types)
     timeout-minutes: 15
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     if: |
       contains(inputs.jobsToRun, '-all-') ||
       contains(inputs.jobsToRun, '-client-')
@@ -574,7 +574,7 @@ jobs:
   workspace-types:
     name: Workspace types
     timeout-minutes: 15
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     strategy:
       fail-fast: false
       matrix:
@@ -598,7 +598,7 @@ jobs:
   integration-tests:
     name: Integration tests
     timeout-minutes: 20
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     if: |
       contains(inputs.jobsToRun, '-all-') ||
       contains(inputs.jobsToRun, '-integration-tests-')
@@ -660,7 +660,7 @@ jobs:
       fail-fast: false
       matrix:
         queryEngine: ${{ fromJson(inputs.queryEngine) }}
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [blacksmith-4vcpu-ubuntu-2404]
         node: [16, 18, 20]
     steps:
       - uses: actions/checkout@v4
@@ -715,7 +715,7 @@ jobs:
       fail-fast: false
       matrix:
         queryEngine: ${{ fromJson(inputs.queryEngine) }}
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [blacksmith-4vcpu-ubuntu-2404]
         node: [16, 18, 20]
     steps:
       - uses: actions/checkout@v4
@@ -770,7 +770,7 @@ jobs:
       fail-fast: false
       matrix:
         queryEngine: ${{ fromJson(inputs.queryEngine) }}
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [blacksmith-4vcpu-ubuntu-2404]
         node: [16, 18, 20]
     steps:
       - uses: actions/checkout@v4
@@ -824,10 +824,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [ubuntu-latest]
         node: [16, 18, 20]
         include:
-          - os: windows-latest
+          - os: blacksmith-4vcpu-windows-2025
             version: 16
           - os: macos-latest
             version: 16
@@ -865,7 +865,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [blacksmith-4vcpu-ubuntu-2204]
+        os: [blacksmith-4vcpu-ubuntu-2404]
         node: [16, 18, 20]
     steps:
       - uses: actions/checkout@v4
@@ -1009,7 +1009,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, windows-latest]
+        os: [macos-14, blacksmith-4vcpu-windows-2025]
         node: [16]
         queryEngine: ${{ fromJson(inputs.queryEngine) }}
         shard: ['1/2', '2/2']
@@ -1089,7 +1089,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, windows-latest]
+        os: [macos-14, blacksmith-4vcpu-windows-2025]
         node: [16]
         queryEngine: ${{ fromJson(inputs.queryEngine) }}
     steps:
